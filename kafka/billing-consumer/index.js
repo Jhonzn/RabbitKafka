@@ -1,9 +1,9 @@
 ﻿const { Kafka } = require("kafkajs");
 
-const NAME = process.env.billing-consumer || "billing-consumer";
+const NAME = process.env.CONSUMER_NAME || "billing-consumer";
 const BROKER = process.env.KAFKA_BROKER || "localhost:29092";
 const TOPIC = process.env.KAFKA_TOPIC || "orders.events";
-const billing-service-group = process.env.KAFKA_billing-service-group || "billing-service-group";
+const GROUP_ID = process.env.KAFKA_GROUP_ID || "billing-service-group";
 
 const kafka = new Kafka({
   clientId: NAME,
@@ -11,7 +11,7 @@ const kafka = new Kafka({
   retry: { retries: 10 }
 });
 
-const consumer = kafka.consumer({ groupId: billing-service-group });
+const consumer = kafka.consumer({ groupId: GROUP_ID });
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -37,7 +37,7 @@ async function start() {
   });
 
   console.log(
-    `[${NAME}] Escuchando ${TOPIC}; group=${billing-service-group}`
+    `[${NAME}] Escuchando ${TOPIC}; group=${GROUP_ID}`
   );
 
   await consumer.run({
