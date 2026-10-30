@@ -576,25 +576,7 @@ Ubicación: `evidencias/rabbitmq/`
 
 Las capturas de código respaldan la implementación, pero no reemplazan las evidencias de ejecución. Antes de entregar, verifica el contenido real de cada captura.
 
-# 8. Lista de verificación antes de entregar
-
-- [ ] CP-01: captura de solicitud y respuesta de creación.
-- [ ] CP-02: evidencia de publicación y/o mensaje visible en la cola.
-- [ ] CP-03: recepción y procesamiento en los registros.
-- [ ] CP-06: mismo `orderId` en API y worker.
-- [ ] CP-07: tiempo medido y evidencia de respuesta antes de finalizar el procesamiento.
-- [ ] CP-08: código que muestra la comunicación mediante RabbitMQ, sin llamadas directas.
-- [ ] CP-09: mensaje pendiente y recuperación después de la caída del consumidor.
-- [ ] CP-10: ambos workers procesando pedidos.
-- [ ] CP-11: mensaje publicado sin consumidores y procesado al volver a iniciarlos.
-- [ ] CP-12: evidencia del mensaje pendiente y de su procesamiento posterior.
-- [ ] Cada CP contiene objetivo, precondiciones, entradas, pasos, resultado esperado, resultado obtenido, evidencia, estado y análisis técnico.
-- [ ] Incluir el código fuente, `docker-compose.yml`, Dockerfiles y dependencias requeridas.
-- [ ] Elaborar las conclusiones a partir de los resultados observados.
-- [ ] Exportar el informe final a PDF si lo exige la guía del taller.
-- [ ] No afirmar que se probó una caída del broker o un mensaje sin ACK si esos escenarios no se ejecutaron.
-
-# 9. Comandos rápidos de diagnóstico
+# 8. Comandos rápidos de diagnóstico
 
 Estado de los servicios:
 
@@ -641,8 +623,7 @@ Test-Path .\docker-compose.yml
 
 El segundo comando debe devolver `True`.
 
-# 10. Conclusiones
+# 9. Conclusiones
 
 Completa esta sección después de cerrar las verificaciones pendientes. Describe, a partir de las evidencias, qué se comprobó sobre publicación y consumo, trazabilidad, respuesta asíncrona, desacoplamiento y distribución entre consumidores. Documenta también las limitaciones observadas.
 
-No generalices el resultado de una prueba: recuperar un mensaje pendiente cuando vuelven los consumidores no demuestra automáticamente la recuperación después de reiniciar el broker ni la recuperación de un mensaje entregado pero sin ACK.
